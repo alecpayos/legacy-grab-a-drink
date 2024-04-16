@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grab a Drink!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nixie+One&family=Open+Sans:wght@300;600;800&family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/234442401_168723678698088_6824509519794723789_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeE8zs6o4qlpUTr0syly9_2Fjq5v0Y9hNI-Orm_Rj2E0jybSCsBLpgGmv9X5VMERLfeYeBX6sgIUGUJJ5T4mWbLj&_nc_ohc=KoOEsiRQWw0AX_-iluM&_nc_ht=scontent.fceb2-1.fna&oh=578a8bc6428ec2cf3165aef021f3ee26&oe=6141B685">
+    <script src="https://kit.fontawesome.com/6ab75e7019.js" crossorigin="anonymous"></script>
+    <style>
+        /* Styles are organized top-down */
+        * {
+            cursor: context-menu;
+        }
+        @media screen and (max-width: 2399px) {
+            body {
+                zoom: 100%;
+            }
+        }
+        body {
+            zoom: 80%;
+            margin: 0;
+            background-color: black;
+            color: #F2F2F2;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        /* Chrome autocomplete styles */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+            border: none;
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        /* Contact wrapper*/
+        .contact-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            -webkit-transition: left 1.3s linear;
+        }
+        .about-us {
+            display: flex;
+            align-items: flex-start;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, #AD1515, #424242 40%, black 80%);
+        }
+        .bigger {
+            font-size: 30px;
+        }
+        #about-text {
+            position: relative;
+            top: 3.6in;
+            left: 1in;
+            height: 20%;
+            width: 40%;
+            font: bold 175px 'Open Sans', sans-serif;
+            line-height: 150px;
+        }
+        #first-paragraph {
+            left: -13px;
+            top: 2.6in;
+        }
+        #second-paragraph {
+            top: 50px;
+            left: 0.6in;
+            width: 35%;
+        }
+        #third-paragraph {
+            right: 3in;
+            top: 7in;
+            width: 40%;
+            position: absolute;
+        }
+        .about-context {
+            position: relative;
+            width: 20%;
+            font: 24px 'Open Sans', sans-serif;
+        }
+        #to-main-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            top: 4.6in;
+            right: 10%;
+            width: 3.65in;
+            height: 1in;
+            position: absolute;
+            background-image: linear-gradient(to right, #AD1515 60%, #E84141);
+            font: 600 50px 'Oswald', sans-serif;
+            border-radius: 5px;
+            -webkit-transition: right 0.5s linear;
+        }
+        #to-main-button:hover {
+            transition: 0.5s linear;
+            right: 5%;
+        }
+        .contact-wrapper-position {
+            left: 100%;
+        }
+        /* Main wrapper */
+        .main-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            z-index: -2;
+        }
+        .header, .content, .contact-info-container {
+            display: inherit;
+            width: 100%;
+        }
+        .header {
+            height: 145px;
+        }
+        .home-content {
+            display: flex;
+            width: 100%;
+            height: 726.75px;
+        }
+        .contact-info {
+            justify-content: space-between;
+            height: 100px;
+        }
+        .gad-logo {
+            position: relative;
+            width: 270px;
+            height: 290px;
+            top: -40%;
+            left: 96px;
+        }
+        .home-bar {
+            display: inherit;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            width: 615px;
+            top: 15%;
+            left: 163px;
+        }
+        .search-bar {
+            display: inherit;
+            position: relative;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 672px;
+            width: 35%;
+            height: 38%;
+            top: 47%;
+            left: 260px;
+        }
+        .homebar-buttons {
+            background-color: black;
+            border: none;
+            color: inherit;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 800;
+            font-size: 37px;
+            padding: 10px 15px;
+        }
+        .homebar-buttons:hover {
+            color: #AD1515;
+        }
+        .init {
+            background-image: linear-gradient(to bottom, black 97%, #911111 3%);
+        }
+        #search {
+            height: 100%;
+            border: none;
+            border-radius: 120px;
+            outline: none;
+            font-size: 20px;
+            width: 45%;
+            padding: 0 30px;
+        }
+        #search:hover {
+            background-color: #dddddd;
+        }
+        .fa-search {
+            position: relative;
+            left: 70%;
+            transform: scale(1.5);
+            color: #171717;
+        }
+        .fa-user-circle, .fa-shopping-cart {
+            transform: scale(2.5);
+        }
+        .fa-user-circle:hover, .fa-shopping-cart:hover, .fa-eye:hover {
+            color: #AD1515;
+        }
+        .liquor-bg {
+            width: 1478.4px;
+            position: absolute; 
+            top: 235px;
+            left: -390px;
+            object-fit: contain;
+        }
+        .content {
+            position: absolute;
+            flex-direction: column;
+            align-items: center;
+            -webkit-transition: top 1.3s linear;
+        }
+        .context {
+            flex-direction: column;
+            position: inherit;
+            left: 9.7in;
+        }
+        .main-context {
+            width: 915.31px;
+        }
+        .support-context {
+            position: inherit;
+            bottom: -170px;
+            left: 0px;
+            font-family: 'Nixie One', cursive;
+            font-size: 80px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .one-time {
+            position: inherit;
+            left: 12in;
+            top: 5in;
+        }
+        .otp {
+            background-color: #AD1515;
+            border: none;
+            border-radius: 10px;
+            color: inherit;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 34px;
+            font-weight: 600;
+            width: 12.5em;
+            height: 60px;
+        }
+        .otp:hover {
+            background-color: inherit;
+            background-color: #E63131;
+        }
+        .contact-info-container {
+            background-color: transparent;
+        }
+        .contact-info-buttons {
+            position: relative;
+            top: 45px;
+            left: 85px;
+            background: none;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: inherit;
+            letter-spacing: 1.4px;
+            word-spacing: 1px;
+            padding: 0 20px;
+        }
+        .contact-info-buttons:hover {
+            color: #AD1515;
+        }
+        /* Login Form Syles */
+        .login-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .overlay, .overlays {
+            position: absolute;
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            background-color: #8d8b8b;
+            opacity: 80%;
+            left: 0;
+            z-index: -1;
+        }
+        .login {
+            display: flex;
+            position: absolute;
+            flex-direction: column;
+            align-items: center;
+            background-image: linear-gradient(to bottom right, #AD1515, black 90%);
+            width:  325px;
+            height: 500px;
+            border-radius: 5px;
+            padding: 2.5%;
+            box-sizing: content-box;
+        }
+        .fa-times {
+            transform: scale(2);
+            position: absolute;
+            top: 5%;
+            right: 7%;
+        }
+        #gad-login {
+            position: relative;
+            transform: scale(0.45);
+            background: white;
+            padding: 25px;
+            border-radius: 50%;
+            top: -18%;
+            margin-bottom: -43%;
+            left: 0;
+        }
+        .login-context {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            font-size: 32px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 900;
+        }
+        .inputs-line {
+            background-image: linear-gradient(to bottom, transparent 97%, #bfbfbf 3%);
+            margin: -5% 0 5% 0;
+            height: 63px;
+        }
+        .inputs {
+            background: none;
+            font-size: 18px;
+            padding: 5px 40px;
+            border-radius: 5px;
+            width: 90%;
+            margin: 2% 0;
+            border: none;
+            outline: none;
+            color: white;
+        }
+        .inputs::placeholder {
+            color: white;
+        }
+        .fa-user, .fa-lock {
+            position: relative;
+            top: 33px;
+            left: 12px;
+        }
+        .fa-eye {
+            transform: scale(1.3);
+            position: relative;
+            top: 52%;
+            left: 85%;
+        }
+        .remember {
+            margin: 15px 20px 15px 20px;
+            position: relative;
+            right: 30%;
+        }
+        [type="checkbox"] {
+            vertical-align: middle;
+        }
+        .remember-me {
+            transform: scale(1.5);
+            font-size: 14px;
+            width: 30px;
+        }
+        .login-button-container {
+            display: flex;
+            justify-content: center;
+            margin: 10% 5.2%;
+        }
+        .login-button {
+            color: #616161;
+            font-size: 16px;
+            padding: 13px 30px;
+            border-radius: 30px;
+            border: none;
+            font-weight: bold;
+        }
+        @keyframes login-button-fade {
+            from {background-color: white;}
+            to {background-color: #AD1515; color: white;}
+        }
+        .login-button:hover {
+            animation: login-button-fade 0.5s forwards;
+        }
+        .forgot {
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            font-size: 12px;
+            width: 31%;
+        }
+        .forgot:hover {
+            background-image: linear-gradient(to bottom, transparent 96%, white 4%);
+        }
+        .incoming {
+            position: relative;
+            top: -40%;
+            font-size: 20px;
+            width: 90%;
+            margin: auto;
+        }
+        /* Membership Container*/
+        .membership-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            width: 9.8in;
+            left: 825px;
+            -webkit-transition: top 1.3s linear;
+            z-index: -2;
+        }
+        .membership-intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 70px;
+            margin-bottom: -7%;
+            font-family: 'Nixie One', sans-serif;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            width: 3.2in;
+        }
+        #membership-logo {
+            top: -13px;
+            left: 0;
+        }
+        .membership-form {
+            display: flex;
+            flex-direction: column;
+            margin: 0 25% 10px 25%;
+            background-color: #AD1515;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .discount-flag {
+            font-size: 28px;
+            padding: 0 0 30px 0;
+        }
+        .membership-inputs {
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            border: none;
+            width: 2.8in;
+        }
+        .membership-button {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #AD1515;
+            border: none;
+            width: 2.5in;
+            border-radius: 5px;
+        }
+        /* Class toggles */
+        .display {
+            display: flex;
+        }
+        .no-display {
+            display: none;
+        }
+        .slide {
+            transition: 1.3s ease-out;
+        }
+        .content-div-position {
+            top: 2.8in;
+        }
+        .content-div-slide-out {
+            top: 125%;
+        }
+        .membership-container-slide-in {
+            top: 140px;
+        }
+        .membership-container-position {
+            top: -1080px;
+        }
+        .shop-wrapper-slide-in {
+            left: 0%;
+        }
+        .shop-wrapper-position {
+            left: 115%;
+        }
+        /* Shop wrapper*/
+        .shop-wrapper {
+            position: fixed;
+            top: 0;
+            width: 1920px;
+            height: 1080px;
+            background-color: #F7F7F7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .shop-background {
+            position: absolute;
+            width: 1920px;
+            height: 1080px;
+            z-index: -2;
+        }
+        .shop-mask {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #1C1C1C;
+            opacity: 75%;
+            z-index: -1;
+        }
+        .shop-container {
+            display: flex;
+            position: absolute;
+            top: 15%;
+            width: 75%;
+            height: 65%;
+        }
+        .liquor-highlight {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, #AD1515 60%, #E84141);
+        }
+        .liquor-content {
+            width: 65%;
+            height: 100%;
+            background-color: #1C1C1C;
+        }
+        .shop-container-mask {
+            position: absolute;
+            top: 75%;
+            left: 35%;
+            background-image: linear-gradient(to bottom, #AD1515 60%, #E84141);
+            width: 81.7%;
+            height: 45%;
+            z-index: -1;
+        }
+        .fa-arrow-alt-circle-left {
+            position: absolute;
+            top: 6%;
+            left: 3.3%;
+            transform: scale(3);
+            background-color: #1C1C1C;
+            padding: 1px;
+            color: #AD1515;
+            border-radius: 50%;
+        }
+        .fa-arrow-alt-circle-left:hover {
+            transition: 0.2s ease-in;
+            color: #AD1515;
+            background-color: white;
+        }
+        #gad-shop {
+            transform: scale(0.25);
+            position: absolute;
+            top: -19%;
+            left: 18%;
+            background-color: #1C1C1C;
+            padding: 50px;
+            border-radius: 50%;
+        }
+        .selection-container {
+            display: flex;
+            position: absolute;
+            left: 35%;
+            width: 100%;
+            height: 90%;
+            background-color: white;
+        }
+        .highlight-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 5%;
+            height: 70%;
+            width: 80%;
+        }
+        .highlight-container img {
+            transform: scale(1.8);
+            position: absolute;
+            top: 10%;
+
+        }
+        .liquor-content-header {
+            width: 100%;
+            height: 1in;
+            background-color: #232427;
+        }
+        .liquor-tabs-container {
+            display: flex;
+            justify-content: space-evenly;
+            height: 100%;
+            width: 6in;
+            padding-left: 20px;
+        }
+        .cart {
+            display: flex;
+            position: relative;
+            left: 140%;
+            height: 100%;
+            width: 15%;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-icon {
+            position: relative;
+            padding: 2px;
+        }
+        .cart-icon:hover, #shop-cart-icon:hover {
+            color: #F2F2F2;
+            border: 1px solid #F2F2F2;
+            border-radius: 5px;
+        }
+        .cart-icon-counter {
+            display: flex;
+            position: absolute;
+            background-color: #E53F3F;
+            top: -8%;
+            right: -3.5%;
+            width: 30px;
+            height: 30px;
+            border-radius: 50px;
+            align-items: center;
+            justify-content: center;
+            font: bold 20px 'Open Sans', sans-serif;
+        }
+        #shop-cart-icon {
+            padding: 2px;
+            position: relative;
+        }
+        #cart-counter {
+            top: 16%;
+            right: 11%;
+        }
+        .liquor-tabs {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            font-family: 'Open Sans', sans-serif;
+            padding: 0 20px;
+        }
+        .liquor-tabs:hover {
+            background-color: #212121;
+        }
+        .content-offers, .liquor-description {
+            flex-direction: column;
+            width: 100%;
+            height: 6.3in;
+            align-items: center;
+        }
+        .liquor-description {
+            position: absolute;
+            top: 32%;
+            right: 15%;
+            width: 45%;
+            height: 70%;
+            font: 30px 'Open Sans', sans-serif;
+        }
+        .alcohol-level {
+            position: absolute;
+            top: 60%;
+            left: 40%;
+            width: 17%;
+            height: 6%;
+            font: 30px 'Open Sans', sans-serif;
+        }
+        .price-box {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            bottom: 17%;
+            right: 5%;
+            width: 55%;
+            height: 12%;
+            font: bold 50px 'Oswald', sans-serif;
+        }
+        .add-to-cart {
+            position: absolute;
+            top: 25%;
+            right: 45%;
+            color: #BFBFBF;
+            background-color: #c37105;
+            padding: 0 15px;
+            border-radius: 5px;
+            text-align: center;
+            font: 600 36px 'Open Sans', sans-serif;
+        }
+        .add-to-cart:hover {
+            transition: 0.2s ease-out;
+            background-color: #F58E07;
+        }
+        .first-offer, .second-offer {
+            font: bold 50px 'Nixie One', cursive;
+            height: 1.5in;
+            width: 75%;
+            align-items: center;
+            justify-content: center;
+            color: #E53F3F;
+            text-align: center;
+        }
+        .images-container {
+            display: flex;
+            height: 70%;
+            width: 90%;
+            justify-content: space-between;
+        }
+        .liquor-image-containers {
+            width: 100%;
+            height: 70%;
+            background-color: #232427;
+            border-radius: 10px;
+            margin: 2%;
+        }
+        .image {
+            transform: scale(0.9);
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        .image:hover {
+            background-image: linear-gradient(to bottom, #AD1515 60%, #E84141);
+        }
+        /* Cart wrapper styles*/
+        .cart-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 10in;
+            align-items: center;
+            justify-content: center;
+        }
+        .checkout-overlay {
+            width: inherit;
+            height: 106%;
+            background-color: #8b8b8b;
+            opacity: 50%;
+        }
+        .checkout-form, .checkout-form-overlay {
+            flex-direction: column;
+            position: inherit;
+            height: 754px;
+            width: 480px;
+            border-radius: 50px;
+            background-color: white; 
+            box-shadow: 4px 4px 0 0 #AD1515, 8px 8px 0 0 black;
+        }
+        .checkout-header {
+            display: inherit;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 18%;
+            color: #171717;
+            font: 600 42px 'Open Sans', sans-serif;
+        }
+        .checkout-content {
+            display: inherit;
+            flex-direction: column;
+            position: absolute;
+            width: 99.2%;
+            height: 5in;
+            top: 13%;
+            background-color: #F7F7F7;
+            border-radius: 30px;
+            overflow: auto;
+            border: 2px solid #424242;
+            padding-bottom: 1.5in;
+        }
+        .checkout-content::-webkit-scrollbar {
+            display: none;
+        }
+        .checkout-footer {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 0;
+            background-color: white;
+            left: 0;
+            width: 4.55in;
+            height: 0.6in;
+            border-radius: 30px 30px 50px 50px;
+            border: 2px solid #424242;
+            padding: 20px;
+        }
+        .fa-arrow-left {
+            color: #171717;
+            position: absolute;
+            transform: scale(0.7);
+            top: 6.5%;
+            left: 7%;
+        }
+        .fa-arrow-left:hover {
+            top: 5.7%;
+            left: 5.2%;
+            padding: 3px 6px;
+            border: 3px solid #171717;
+            border-radius: 5px;
+        }
+        .checkout-item {
+            height: 20%;
+            width: 90%;
+            margin: 5% 5% 0 5%;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: 7px 7px 5px -2px #797979;
+            font-size: 100px;
+            position: relative;
+            left: -10px;
+            align-items: center;
+            justify-content: left;
+            padding-left: 20px;
+        }
+        .total {
+            width: 50%;
+            height: 30%;
+            font: 600 40px 'Open Sans', sans-serif;
+            color: #424242;
+        }
+        .checkout-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 3%;
+            background-color: #AD1515;
+            height: 0.5in;
+            width: 40%;
+            border-radius: 50px;
+            font-size: 32px;
+            padding: 0 10px;
+            box-shadow: 0 7px 0 0 #121214;
+            border: 2px solid #121214;
+        }
+        .checkout-button:hover {
+            box-shadow: unset;
+            top: 7%;
+            background-color: #e52e2d;
+        }
+        .checkout-item {
+            display: flex;
+            width: 4.2in;
+            height: 1in;
+            position: relative;
+            left: 3px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            border: 2px solid #424242;
+        }
+        .item-name {
+            font-size: 32px;
+            color: #424242;
+        }
+        .item-price {
+            font-size: 40px;
+            color: #424242;
+        }
+        .fa-trash-alt {
+            position: absolute;
+            left: 78%;
+            color: #AD1515;
+            transform: scale(0.5);
+        }
+        .fa-trash-alt:hover {
+            transition: 0.1s linear;
+            transform: scale(0.57);
+        }
+        .otp-and-membership-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        .overlay-contents {
+            position: absolute;
+            top: 1in;
+            width: 13in;
+            border-radius: 10px;
+            color: #BA1717;
+            font: 600 70px 'Open Sans', sans-serif;
+            padding: 50px;
+            text-justify: inter-word;
+            background-image: linear-gradient(135deg, white, #C5C5C5);
+        }
+        #otp-message {
+            width: 11.9in;
+        }
+        .omw-button {
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 5in;
+            height: 1in;
+            position: relative;
+            top: 7in;
+            font: 900 50px 'Nixie One', cursive;
+            background-color: #AD1515;
+            border-radius: 50px;
+        }
+        .omw-button:hover {
+            background-color: #E64141;
+        }
+        .location, .contact-number {
+            top: 150px;
+            left: 28px;
+            height: 50px;
+            width: 4in;
+            color: black;
+            position: absolute;
+            font: bold 26px 'Nixie One', cursive;
+            border-radius: 10px;
+            padding: 5px 20px;
+            outline: none;
+        }
+        .checkout-context, .payment-mode, .credit-card {
+            color: #424242;
+            position: absolute;
+            left: 20px;
+            padding: 5px 20px;
+            font: 30px 'Open Sans', sans-serif;
+            border-radius: 10px;
+            left: 38px;
+        }
+        .checkout-context {
+            top: 0.3in;
+            font-size: 50px;
+            width: 3.8in;
+            height: 1in;
+            justify-content: center;
+            display: flex;
+        }
+        .payment-mode {
+            top: 3.5in;
+            width: 3.8in;
+            justify-content: space-evenly;
+            align-items: center;
+            display: flex;
+        }
+        .cash, .credit {
+            width: 1.3in;
+            height: 0.5in;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .powder {
+            background-color: powderblue;
+        }
+        .contact-number {
+            top: 2.5in;
+        }
+        .contact-number::-webkit-outer-spin-button,
+        .contact-number::-webkit-inner-spin-button {
+            display: none;
+        }
+        .credit-card {
+            top: 4.3in;
+            width: 4.2in;
+            left: 18px;
+            justify-content: space-between;
+            padding-left: 23px;
+        }
+        .credit-field {
+            width: 0.8in;
+            background-color: #f1f1f1;
+            border: 2px solid #424242;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 0.5in;
+            border-radius: 5px;
+            font-size: 24px;
+            text-align: center;
+        }
+        .credit-field::-webkit-outer-spin-button,
+        .credit-field::-webkit-inner-spin-button {
+            display: none;
+        }
+        .discount-area {
+            width: 2in;
+            height: 1in;
+            position: absolute;
+            bottom: 23%;
+            left: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 600 30px 'Open Sans', sans-serif;
+            text-align: right;
+            word-spacing: 5in;
+            color: #424242;
+        }
+        .checkout-total {
+            position: absolute;
+            bottom: 15%;
+            left: 10%;
+            width: 4in;
+            height: 1in;
+            font: 600 40px 'Open Sans', sans-serif;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: #424242;
+        }
+        .place-order {
+            position: absolute;
+            width: 99%;
+            height: 0.9in;
+            background-image: linear-gradient(145deg, #ad1515, #E84141, #ad1515);
+            bottom: 0;
+            border-radius: 50px;
+            font: bold 45px 'Open Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+        }
+        .place-order:hover {
+            background-image: linear-gradient(145deg, #E84141, #ad1515, #E84141);
+        }
+        #overlay-arrow {
+            top: 8.3%;
+            left: 10%;
+            transform: scale(2);
+            z-index: 1;
+        }
+        #overlay-arrow:hover {
+            border: 2px solid #424242;
+            border-radius: 5px;
+            top: 7.7%;
+            left: 8.3%;
+        }
+        .purchase-message {
+            font: 600 100px 'Oswald', sans-serif;
+            position: absolute;
+            width: 9.8in;
+            right: 20%;
+            background-color: black;
+            padding: 0 40px;
+            border-radius: 10px;
+        }
+        #final-message {
+            transform: scale(1);
+            position: absolute;
+            top: -260%;
+            right: -35%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="otp-and-membership-wrapper">
+            <div id="otp-message" class="overlay-contents no-display">
+                Since this is a one-time purchase, you are not entitled to discounts
+            </div>
+            <div class="omw-button no-display">I understand.</div>
+            <div class="overlay-contents no-display">
+                Thank you for subscribing to Grab a Drink! To show our gratitude, you are granted a 10% discount for every item purchased.
+            </div>
+            <div class="omw-button no-display">Proceed to Shop</div>
+            <div class="overlays no-display"></div>
+        </div>
+        <div class="contact-wrapper">
+            <div class="about-us">
+                <div id="about-text">About us</div>
+                <div id="first-paragraph" class="about-context"><strong class="bigger">In a pandemic-laden year</strong>, we have seen people go out to the streets to get some drinks – risking infection to have a bit of fun. Even when a liquor ban wasimplemented in our city, people broke the law and purchased spirits from the black market.</div>
+                <div id="second-paragraph" class="about-context">With the COVID-19 outbreak causing obsolescence to nightclubs and resto-bars, Grab a Drink offers a leeway for consumers to get their drinks without violating social distancing. <strong class="bigger">As an enterprise dedicated to selling liquor using a digital platform</strong>, this means that every adult could satisfy its carnal need of drinking under his home – a safe space for every individual. Grab a Drink also helps out the club industry, as we get our drinks from local bars.</div>
+                <div id="third-paragraph" class="about-context">Along with the emergence of e-commerce in our country, the liquor industry should also digitize the liquor market. <strong class="bigger">Grab a Drink is a trailblazer as it is the first application that offers this kind of service in our country</strong>. We believe that more bars would see the potential of Grab a Drink and follow our footsteps which would allow the liquor industry to go digital.</div>
+                <div id="to-main-button">Get started<i class="fas fa-arrow-right"></i></div>
+            </div>
+            <div class="contact-us"></div>
+            <div class="delivery-info"></div>
+            <div class="terms-of-use"></div>
+            <div class="privacy-policy"></div>
+        </div>
+        <div class="main-wrapper">
+            <div class="header">
+                <img class="gad-logo" src="https://z-p3-scontent.fceb1-2.fna.fbcdn.net/v/t1.15752-9/234442401_168723678698088_6824509519794723789_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeE8zs6o4qlpUTr0syly9_2Fjq5v0Y9hNI-Orm_Rj2E0jybSCsBLpgGmv9X5VMERLfeYeBX6sgIUGUJJ5T4mWbLj&_nc_ohc=KoOEsiRQWw0AX-Cxpqa&_nc_ht=z-p3-scontent.fceb1-2.fna&oh=87561fab4f09f0398fbef17a89751bac&oe=6141B685" alt="gad logo">
+                <div class="home-bar">
+                    <button class="homebar-buttons init">Home</button>
+                    <button class="homebar-buttons">Membership</button>
+                    <button class="homebar-buttons">Shop</button>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <label for="search"></label>
+                    <input type="text" name="search" id="search" maxlength="25">
+                    <i class="far fa-user-circle"></i>
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <div class="cart-icon-counter"></div>
+                </div>
+            </div>
+            <div class="home-content">
+                <img class="liquor-bg" src="https://scontent.fceb2-2.fna.fbcdn.net/v/t1.15752-9/240480613_280058553458854_7403646225098991706_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeHHmsocXKtI7qsTcKG8Nr62ar8AK-iwoxRqvwAr6LCjFJjqdkhcoAMtKyuzvMRMRdPTbC7S7gQehmIuy90B5rpL&_nc_ohc=QMEYTYfpLysAX8GNeh5&_nc_ht=scontent.fceb2-2.fna&oh=6b118d94972dc2b53a2920f577424c5a&oe=614A7964" alt="liquor background">
+                <div class="content content-div-position">
+                    <div class="context">
+                        <img class="main-context" src="https://z-p3-scontent.fceb1-3.fna.fbcdn.net/v/t1.15752-9/237260867_358758219162773_6814842945336195306_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeHwGHWPX01fbiLBX5oD2AuPlQ9KYfM1_byVD0ph8zX9vNR_o-eNdqMyAg3HLejE6vPro5J8wKuOmSLJWAK12dxM&_nc_ohc=oGs8UfSXBz4AX8-I8cY&_nc_ht=z-p3-scontent.fceb1-3.fna&oh=f1d65c95a03bd05a3e97cd569113bc50&oe=61429158" alt="click and drink">
+                        <p class="support-context">wherever. whenever.</p>
+                    </div>
+                    <div class="one-time">
+                        <label for="otp"></label>
+                        <input type="submit" name="otp" class="otp" value="one-time purchase only">
+                    </div>
+                </div>
+            </div>
+            <div class="contact-info-container">
+                <div class="contact-info">
+                    <button class="contact-info-buttons">About Us</button>
+                    <button class="contact-info-buttons">Contact Us</button>
+                    <button class="contact-info-buttons">Delivery Info</button>
+                    <button class="contact-info-buttons">Terms of Use</button>
+                    <button class="contact-info-buttons">Privacy Policy</button>
+                </div>
+            </div>
+        </div>
+        <div class="sub-wrapper">
+            <div class="login-container">
+                <div class="overlay"></div>
+                <form class="login">
+                    <i class="fas fa-times"></i>
+                    <img id="gad-login" class="gad-logo" src="https://z-p3-scontent.fceb1-2.fna.fbcdn.net/v/t1.15752-9/234442401_168723678698088_6824509519794723789_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeE8zs6o4qlpUTr0syly9_2Fjq5v0Y9hNI-Orm_Rj2E0jybSCsBLpgGmv9X5VMERLfeYeBX6sgIUGUJJ5T4mWbLj&_nc_ohc=KoOEsiRQWw0AX-Cxpqa&_nc_ht=z-p3-scontent.fceb1-2.fna&oh=87561fab4f09f0398fbef17a89751bac&oe=6141B685" alt="gad logo">
+                    <div class="login-context">LOG IN</div>
+                    <div class="inputs-line">
+                        <i class="fas fa-user"></i>
+                        <label for="username"></label>
+                        <input type="text" name="username" class="inputs" placeholder="Username">
+                    </div>
+                    <div class="inputs-line">
+                        <i class="fas fa-lock"></i>
+                        <label for="password"><i class="far fa-eye"></i></label>
+                        <input type="password" name="password" class="inputs" placeholder="Password">
+                    </div>
+                    <div class="remember">
+                        <label class="remember-me" for="remember-me">
+                            <input type="checkbox" name="remember-me" class="remember-me">Remember Me
+                        </label>
+                    </div>
+                    <div class="login-button-container">
+                        <label for="login-button"></label>
+                        <input type="submit" name="login-button" class="login-button" value="Login">
+                    </div>
+                    <div class="forgot">Forgot Password?</div>
+                    <div class="incoming no-display">This feature will be added sometime in the future. Thank you for understanding!</div>
+                </form>
+            </div>
+            <div class="membership-container membership-container-position">
+                <div class="membership-intro">Be a
+                    <div class="logo-container"><img id="membership-logo" class="gad-logo" src="https://z-p3-scontent.fceb1-2.fna.fbcdn.net/v/t1.15752-9/234442401_168723678698088_6824509519794723789_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeE8zs6o4qlpUTr0syly9_2Fjq5v0Y9hNI-Orm_Rj2E0jybSCsBLpgGmv9X5VMERLfeYeBX6sgIUGUJJ5T4mWbLj&_nc_ohc=KoOEsiRQWw0AX-Cxpqa&_nc_ht=z-p3-scontent.fceb1-2.fna&oh=87561fab4f09f0398fbef17a89751bac&oe=6141B685" alt="gad logo"></div> member now!
+                </div>              
+                <div class="discount-flag"> Enjoy Special Discounts and Promos!</div>
+                <div class="membership-form">
+                    <input class="membership-inputs" type="text" placeholder="Full Name" required>
+                    <input class="membership-inputs" type="text" placeholder="Email Address" required>
+                    <input class="membership-inputs" type="text" placeholder="Contact Number" required>
+                    <input class="membership-inputs" type="text" placeholder="Credit Card Number" required>
+                    <input class="membership-inputs" type="text" placeholder="Password" required>
+                </div>
+                <div>
+                    <input type="submit" name="membership-button" class="membership-button" value="REGISTER">
+                </div>
+            </div>
+        </div>
+        <div class="shop-wrapper shop-wrapper-position">
+            <div class="shop-mask"></div>
+            <img class="shop-background" src="https://z-p3-scontent.fceb1-2.fna.fbcdn.net/v/t1.15752-9/240470272_199696408868077_1911431361602890043_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeF4WSmSXjcST5kPUP87gezL_M42SZqFsLz8zjZJmoWwvCYFiT_jM-CAQb4zwsFbo2cdJbSfK4JofAvwF2b-Bdxy&_nc_ohc=dFAPBHj3KxYAX8uAehY&_nc_ht=z-p3-scontent.fceb1-2.fna&oh=5777a7780d87a861df84bb8ecf610d18&oe=614B40B9" alt="">
+            <div class="shop-container">
+                <i class="far fa-arrow-alt-circle-left"></i>
+                <img id="gad-shop" class="gad-logo" src="https://z-p3-scontent.fceb1-2.fna.fbcdn.net/v/t1.15752-9/234442401_168723678698088_6824509519794723789_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeE8zs6o4qlpUTr0syly9_2Fjq5v0Y9hNI-Orm_Rj2E0jybSCsBLpgGmv9X5VMERLfeYeBX6sgIUGUJJ5T4mWbLj&_nc_ohc=KoOEsiRQWw0AX-Cxpqa&_nc_ht=z-p3-scontent.fceb1-2.fna&oh=87561fab4f09f0398fbef17a89751bac&oe=6141B685" alt="">
+                <div class="liquor-highlight">
+                    <div class="highlight-container">
+                        <img src="https://z-p3-scontent.fceb1-2.fna.fbcdn.net/v/t1.15752-9/237433883_174032898134539_6065605090279927236_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeELX7XbrilV129BrJs5MAOriQWRL3VnQNqJBZEvdWdA2k255GKOw8OmFLSMd5MB1mt7PtXme9x_rv5kBy98T0YV&_nc_ohc=9yGVAmywSDEAX9dCXI1&_nc_ht=z-p3-scontent.fceb1-2.fna&oh=5515b426ffa8676cca532d55d4c11411&oe=614AD31D">
+                    </div>
+                </div>
+                <div class="liquor-content">
+                    <div class="liquor-content-header">
+                        <div class="liquor-tabs-container">
+                            <div class="cart">
+                                <i id="shop-cart-icon" class="fas fa-shopping-cart"></i>
+                                <div id="cart-counter" class="cart-icon-counter"></div>
+                            </div>
+                            <div class="liquor-tabs">CLEAR SPIRITS</div>
+                            <div class="liquor-tabs">DARK SPIRITS</div>
+                            <div class="liquor-tabs">SPECIAL SPIRITS</div>
+                        </div>
+                    </div>
+                    <div class="liquor-description"></div>
+                    <div class="alcohol-level"></div>
+                    <div class="price-box">
+                        <div class="price"></div>
+                        <div class="add-to-cart no-display">Add to Cart</div>
+                    </div>
+                    <div class="content-offers">
+                        <div class="first-offer display">PICK A CATEGORY</div>
+                        <div class="second-offer no-display">PICK A LIQUOR TO DISPLAY</div>
+                        <div class="images-container">
+                            <div class="liquor-image-containers"><img class="image"></div>
+                            <div class="liquor-image-containers"><img class="image"></div>
+                            <div class="liquor-image-containers"><img class="image"></div>
+                            <div class="liquor-image-containers"><img class="image"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-container-mask"></div>
+            </div>
+        </div>
+        <div class="cart-wrapper no-display">
+            <div class="checkout-overlay"></div>
+            <div class="checkout-form-overlay no-display">
+                <i id="overlay-arrow" class="fas fa-arrow-left"></i>
+                <div class="checkout-context">Checkout</div>
+                <input type="text" name="location" class="location" placeholder="Address">
+                <input type="number" name="location" class="contact-number" placeholder="Contact number">
+                <div class="payment-mode">
+                    <div class="cash">Cash</div>
+                    <div class="credit">Credit</div>
+                </div>
+                <div class="credit-card no-display">
+                    <input class="credit-field" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4">
+                    <input class="credit-field" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4">
+                    <input class="credit-field" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4">
+                    <input class="credit-field" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4">
+                </div>
+                <div class="discount-area"></div>
+                <div class="checkout-total"></div>
+                <div class="place-order">Place Order</div>
+            </div>
+            <div class="purchase-message no-display">Thank you for your purchase!<i id="final-message" class="fas fa-times"></i></div>
+            <div class="checkout-form">
+                <div class="checkout-header"><i class="fas fa-arrow-left"></i>My Cart</div>
+                <div class="checkout-content">
+                </div>
+                <div class="checkout-footer">
+                    <div class="total">₱ 0.00</div>
+                    <div class="checkout-button">Check Out</div>
+                </div>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script>
+        // Declarations
+        const accountButtons = document.querySelectorAll('.fa-user-circle');
+        const loginContainer = document.querySelector('.login-container');
+        const loginExit = document.querySelector('.fa-times');
+        const revealPassword = document.querySelectorAll('.fa-eye, input[type="password"]');
+        const forgotPassword = document.querySelector('.forgot');
+        const formAllContent = document.querySelectorAll('.login *');
+        const incomingFeatures = document.querySelector('.incoming');
+        const headerTabs = document.querySelectorAll('.homebar-buttons');
+        const homebar = document.querySelector('.home-bar');
+        const shopWrapper = document.querySelector('.shop-wrapper');
+        const shopBackButton = document.querySelector('.fa-arrow-alt-circle-left');
+        const highlightContainer = document.querySelector('.highlight-container img');
+        const liquorTabs = document.querySelectorAll('.liquor-tabs');
+        const liquorImageContainers = document.querySelectorAll('.image');
+        const offerContexts = document.querySelectorAll('.first-offer, .second-offer');
+        const liquorDescription = document.querySelector('.liquor-description');
+        const alcoholLevel = document.querySelector('.alcohol-level');
+        const contentDiv = document.querySelector('.content');
+        const membershipRegistration = document.querySelectorAll('.membership-button, .membership-container');
+        const price = document.querySelector('.price');
+        const addToCart = document.querySelector('.add-to-cart');
+        const cartCounter = document.querySelectorAll('.cart-icon-counter');
+        const cartButton = document.querySelectorAll('.fa-shopping-cart');
+        const cartWrapper = document.querySelector('.cart-wrapper');
+        const cartBackButton = document.querySelectorAll('.fa-arrow-left');
+        const contactWrapper = document.querySelector('.contact-wrapper');
+        const toMain = document.querySelector('#to-main-button');
+        const contactButtons = document.querySelectorAll('.contact-info-buttons');
+        const total = document.querySelector('.total');
+        const checkoutItems = document.querySelector('.checkout-item');
+        const checkoutForm = document.querySelector('.checkout-form');
+        const checkoutFormOverlay = document.querySelector('.checkout-form-overlay');
+        const checkoutContent = document.querySelector('.checkout-content');
+        const itemName = document.querySelectorAll('.item-name');
+        const itemPrice = document.querySelectorAll('.item-price');
+        const deleteItem = document.querySelector('.fa-trash-alt');
+        const checkout = document.querySelector('.checkout-button');
+        const oneTimeButton = document.querySelector('.otp')
+        const fieldInputs = document.querySelectorAll('.membership-inputs')
+        const omwItems = document.querySelectorAll('.otp-and-membership-wrapper, .overlay-contents, .omw-button, .overlays')
+        const payment = document.querySelectorAll('.cash, .credit');
+        const cardField = document.querySelector('.credit-card');
+        const checkoutTotal = document.querySelector('.checkout-total');
+        const overlayArrow = document.querySelector('#overlay-arrow')
+        const discountArea = document.querySelector('.discount-area');
+        const userInfo = document.querySelectorAll('.location, .contact-number');
+        const placeOrder = document.querySelectorAll('.place-order, .purchase-message');
+        const finalButton = document.querySelector('#final-message');
+
+        const clearLiquors = [
+            "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/240272937_175831544621452_9137389737497924653_n.png?_nc_cat=101&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeHNiag7TvW2ynlGsUXnPZfwotwZQd1BYVCi3BlB3UFhUDYgVzWNpYwCHmhcfgsaehISeRg8Rwt9bh2Qw6cbv1Ru&_nc_ohc=cDQbbGBeN6oAX-GnvG7&tn=HtAS_3yftlKiKdSe&_nc_ht=scontent.fceb2-1.fna&oh=e25c52ac926b017418f22c8ebdb1dfdc&oe=614D296C",
+            "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/240699200_4279591432158650_6411345118323931817_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeG5BEdHqtaMxGJmohGZvqHs9Zo0Y6vhc771mjRjq-FzvvEPdu1zhrbLx-ENAPuWBNU7flWzrf90wHi5lls8Q6Aq&_nc_ohc=fZIkg8UJV0EAX-0YXRB&_nc_ht=scontent.fceb2-1.fna&oh=4b94c423a720e3668fa3131d8dcedbca&oe=614A187F",
+            "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/234803150_530359014958009_7849772438261379723_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeFqkIY7yg8UAZlyXbVwZY1-gFlxob4-_A2AWXGhvj78DSI1eUMB_-nueYCRClvxD0azi89gVqzw9i2nwofUm08f&_nc_ohc=ZDYpsbh0OKoAX_fAlkM&_nc_ht=scontent.fceb2-1.fna&oh=cd1b4dcbd1bd7f4043efdd4bb36de899&oe=614BA8D3",
+            "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/240473735_841872570053187_3968918184451750065_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEauzSHJirAuPZyMtadUO0ZCieNSs-4KpcKJ41Kz7gqlz3itUxdeu-s_5oPKZ0YuzQGaC7jVRK-Z7QH-2oyKA6D&_nc_ohc=A79ouEN76cwAX-FztzU&_nc_ht=scontent.fceb2-1.fna&oh=7afe6865bbcecfe884f4fbccec79d004&oe=614A6AEA"
+        ];
+
+        const darkLiquors = [
+            "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/239477088_530851044638448_46013044902466474_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeHm7-iB3MCzkdSbCQgcIK5h1YX-FZ9wbrrVhf4Vn3BuuqPJBpETJL-rYnJ3y0VS2GsqEJPPdX8UQfslYAEllHVd&_nc_ohc=-SwjFXESi8oAX9mKDKo&_nc_ht=scontent.fceb2-1.fna&oh=b59d343d579be15b091048ee32abf3fc&oe=614AF93E",
+            "https://scontent.fceb2-2.fna.fbcdn.net/v/t1.15752-9/238592406_432857631342129_3494155930235578286_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeFu1dPpJ_8Y2d_zAjkBGDhQxFhqCgzEM0rEWGoKDMQzSjIwwyhDmTqZCAWGWkEuz5jWMvZ395uu-quSV2V0iwOq&_nc_ohc=fHIscDZHnZAAX9MieXx&_nc_ht=scontent.fceb2-2.fna&oh=567937f88127fc0a233b6b68f97f27de&oe=614B0669",
+            "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/235284495_826077844720985_5116463482740530784_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeFQUIf_tf4rUa5XPGUPPjTMFkMShAkk7eoWQxKECSTt6vwph7GqMdg1Y697fkaA-LwrSGRpieWT6EoK6Y8V_zN0&_nc_ohc=VafsErDUdAUAX8OIMPE&_nc_ht=scontent.fceb2-1.fna&oh=85b3982010c3753161a65b851376a3a4&oe=614B993A",
+            "https://scontent.fceb2-2.fna.fbcdn.net/v/t1.15752-9/238356923_143393257950095_4146773712372037830_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEJ8rlZEUcee-He7uRsZk1TL2XWkalg8kIvZdaRqWDyQslomj89faV9tBRVkql6IlPteuwxB_UWITemWKZ_wm3H&_nc_ohc=twh394aDR7cAX8FhrR2&_nc_ht=scontent.fceb2-2.fna&oh=007cf8ca1ea526c356875f7c841337cb&oe=614B0BBE"
+        ];
+
+        const specialLiquors = [
+            "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/238242675_2039791622835135_4659245185429690496_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEsZlM7FAqURJG0Rt_7eVTojC2oe4ffwFCMLah7h9_AUFZMlzm22vHiXxcHCuvZ08geczdBK2-OmSv9-JZ7iVuT&_nc_ohc=aVoYoHWkvy8AX8VR-Z8&tn=HtAS_3yftlKiKdSe&_nc_ht=scontent.fceb2-1.fna&oh=b85f89b90d603a46b64c408c0351d16b&oe=6149FA6C",
+            "https://scontent.fceb2-2.fna.fbcdn.net/v/t1.15752-9/237754701_4478817435502199_1071773545374131673_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeFRnZp9_dpKxtYpthnjXE7aorGlbNLGja6isaVs0saNrmWuUMUP2CGnJHe5dabRcSaIeDRydH211KiZkS8arwOA&_nc_ohc=ll9trxn_gAgAX8wcQz5&_nc_ht=scontent.fceb2-2.fna&oh=96f41a19bfb22fe212d11fb711cea6d7&oe=614B2CC9",
+            "https://scontent.fceb2-2.fna.fbcdn.net/v/t1.15752-9/238660242_527332028553777_7105950619107998689_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeHV_onAbz_OVRJMYU4D_da4-iHofe7eHfH6Ieh97t4d8cqA021ebIRKvz6WVcXnW-0P8a3Jjs8hbpjSrykXdv5v&_nc_ohc=0rbHtDCqAeEAX_Nbjuf&_nc_ht=scontent.fceb2-2.fna&oh=6a3b97357226e0ebdcd6709dbec47624&oe=614CEEE0",
+            "https://scontent.xx.fbcdn.net/v/t1.15752-9/239621213_1023045431794943_3632360029084408472_n.png?_nc_cat=108&ccb=1-5&_nc_sid=aee45a&_nc_eui2=AeGREVxDrkWifNIvKmQE0mwZN626RjTnAD43rbpGNOcAPlcJL1dkyxCuZ9FE2tlzQlNfNcR6BexE12mht6wf6o7s&_nc_ohc=6nmVPlh_6AQAX8KWP2t&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=07796a2e5d54f3e9d1dfd786a3f3189d&oe=614B71B6"
+        ];
+
+        let priceDisplay = 0;
+        let cartCount = 0;
+        let sourceList = [];
+        const prices = [170, 720, 875, 1790, 695, 1490, 750, 1190, 1895, 500, 1795, 600];
+        const liquorNames = ["GIN", "RUM", "TEQUILA", "VODKA", "BRANDY", "WHISKEY", "BOURBON", "SCOTCH WHISKEY", "ABSINTHE", "SCHNAPPS", "SAKE", "HERBAL VODKA"]
+        const flatFunction = () => {
+            [clearLiquors, darkLiquors, specialLiquors].map(category => {
+                category.map(source => {
+                    sourceList.push(source);
+                })
+            })
+        }
+        const shopSlide = () => {
+            offerContexts[0].parentElement.classList.add('display')
+            shopWrapper.classList.toggle('shop-wrapper-position')
+            shopWrapper.classList.add('slide');
+            shopWrapper.classList.toggle('shop-wrapper-slide-in');
+        }
+
+        //Function code
+        const omw = () => {
+            console.log(omwItems);
+            oneTimeButton.addEventListener('click', () => {
+                [omwItems[1], omwItems[2], omwItems[5]].forEach(content => {
+                    content.classList.toggle('no-display');
+                    content.classList.toggle('display');
+                })
+            })
+            omwItems[2].addEventListener('click', () => {
+                shopSlide();
+                checkout.classList.remove('member-tag');
+                checkout.classList.add('otp-tag');
+            })
+            omwItems[4].addEventListener('click', () => {
+                shopSlide();
+                checkout.classList.remove('otp-tag');
+                checkout.classList.add('member-tag');
+            })
+            shopWrapper.addEventListener('transitionend', () => {
+                [omwItems[1], omwItems[2], omwItems[3], omwItems[4], omwItems[5]].forEach(content => {
+                    content.classList.add('no-display');
+                    content.classList.remove('display');
+                })
+            })
+            membershipRegistration[1].addEventListener('click', () => {
+                [omwItems[3], omwItems[4], omwItems[5]].forEach(content => {
+                    membershipRegistration[1].classList.remove('no-display');
+                    membershipRegistration[1].classList.add('display');
+                    content.classList.toggle('no-display');
+                    content.classList.toggle('display');
+                })
+            })
+        }
+
+        const aboutUsPage = () => {
+            toMain.addEventListener('click', () => {
+                contactWrapper.classList.add('slide');
+                contactWrapper.classList.add('contact-wrapper-position');
+            })
+            contactButtons[0].addEventListener('click', () => {
+                contactWrapper.classList.remove('slide');
+                contactWrapper.classList.remove('contact-wrapper-position');
+            })
+        }
+        const headerButtonsUnderline = () => {
+            headerTabs.forEach(button => {
+                button.addEventListener('click', event => {
+                    headerTabs.forEach(button => {
+                        button.classList.remove('init');
+                    })
+                    event.target.classList.toggle('init');    
+                })
+            })
+        }
+
+        const headerButton = () => {
+            homebar.addEventListener('click', event => {
+                if(event.target.textContent === "Membership") {
+                    contentDiv.classList.toggle('slide');
+                    contentDiv.classList.toggle('content-div-position')
+                    contentDiv.classList.toggle('content-div-slide-out');
+                    membershipRegistration[0].classList.add('slide');
+                    membershipRegistration[0].classList.toggle('membership-container-position')
+                    membershipRegistration[0].classList.toggle('membership-container-slide-in');
+                } else if(event.target.textContent === "Home") {
+                    location.reload();
+                }
+            })
+            headerTabs[2].addEventListener('click', () => {
+                shopSlide();
+                checkout.classList.add('otp-tag');
+            })
+        }
+
+        const login = () => {
+            accountButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    loginContainer.classList.toggle('display')
+                })
+            })
+            loginExit.addEventListener('click', () => {
+                loginContainer.classList.toggle('display')
+                if(incomingFeatures.classList.contains('display')) {
+                    incomingFeatures.classList.toggle('display');
+                    formAllContent.forEach(item => {
+                        item.classList.toggle('no-display');
+                    })
+                }
+            })
+            revealPassword[0].addEventListener('click', () => {
+                revealPassword[0].classList.toggle('fa-eye-slash');
+                if(revealPassword[1].type === "password") {
+                    revealPassword[1].type = "text";
+                } else {
+                    revealPassword[1].type = "password";
+                }
+            })
+            forgotPassword.addEventListener('click', () => {
+                formAllContent.forEach(item => {
+                    item.classList.toggle('no-display');
+                })
+                incomingFeatures.classList.toggle('display');
+                loginExit.classList.remove('no-display')
+            })
+        }
+
+        const shopFunctions = () => {
+            cartCounter.forEach(counter => {
+                counter.textContent = cartCount;
+            })
+            shopBackButton.addEventListener('click', () => {
+                shopWrapper.classList.toggle('shop-wrapper-position')
+                shopWrapper.classList.toggle('shop-wrapper-slide-in');  
+                headerTabs.forEach(tab => {
+                    tab.classList.remove('init');
+                })
+                headerTabs[1].classList.add('init');
+            })
+            liquorTabs.forEach(tab => {
+                tab.addEventListener('click', event => {
+                    liquorDescription.classList.remove('display');
+                    if(offerContexts[1].classList.contains('display')) {
+                        liquorDescription.classList.add('no-display');
+                        highlightContainer.src = "https://z-p3-scontent.fceb1-2.fna.fbcdn.net/v/t1.15752-9/237433883_174032898134539_6065605090279927236_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeELX7XbrilV129BrJs5MAOriQWRL3VnQNqJBZEvdWdA2k255GKOw8OmFLSMd5MB1mt7PtXme9x_rv5kBy98T0YV&_nc_ohc=9yGVAmywSDEAX9dCXI1&_nc_ht=z-p3-scontent.fceb1-2.fna&oh=5515b426ffa8676cca532d55d4c11411&oe=614AD31D";
+                        price.classList.remove('display');
+                        price.classList.add('no-display');
+                        addToCart.classList.remove('-display');
+                        addToCart.classList.add('no-display');
+                    }
+                    alcoholLevel.classList.remove('display');
+                    alcoholLevel.classList.add('no-display');
+                    offerContexts[0].parentElement.classList.remove('no-display');
+                    offerContexts[0].parentElement.classList.add('display');
+                    offerContexts[0].classList.remove('display');
+                    offerContexts[0].classList.add('no-display');
+                    offerContexts[1].classList.remove('no-display');
+                    offerContexts[1].classList.add('display');
+                    if(event.target.textContent === "SPECIAL SPIRITS") {
+                        liquorImageContainers.forEach((container, index) => {
+                            container.src = specialLiquors[index];
+                        })
+                    } else if(event.target.textContent === "DARK SPIRITS") {
+                        liquorImageContainers.forEach((container, index) => {
+                            container.src = darkLiquors[index];
+                        })
+                    } else if(event.target.textContent === "CLEAR SPIRITS") {
+                        liquorImageContainers.forEach((container, index) => {
+                            container.src = clearLiquors[index];
+                        })
+                    }
+                })
+            })
+            liquorImageContainers.forEach(image => {
+                image.addEventListener('click', event => {
+                    if(event.target.src !== "") {
+                        highlightContainer.src = image.src;
+                        offerContexts[0].parentElement.classList.remove('display');
+                        offerContexts[0].parentElement.classList.add('no-display');
+                    }
+                    if(sourceList.includes(event.target.src)) {
+                        alcoholLevel.classList.remove('no-display');
+                        alcoholLevel.classList.add('display');
+                        price.classList.remove('no-display');
+                        price.classList.add('display');
+                        addToCart.classList.remove('no-display');
+                        addToCart.classList.add('display');
+                        liquorDescription.classList.remove('no-display');
+                        liquorDescription.classList.add('display');
+                        switch(sourceList.indexOf(event.target.src)) {
+                            case 0:
+                                liquorDescription.textContent = `This spirit has a predominant flavor of earthiness from roots and tanginess from juniper berries`
+                                alcoholLevel.textContent = "Alcohol level: 35%"
+                                price.textContent = "₱ 170"
+                                break
+                            case 1:
+                                liquorDescription.textContent = `Rum is characterized by its coconut aroma mixed with sweetness from molasses derived from sugarcanes`
+                                alcoholLevel.textContent = "Alcohol level: 35%"
+                                price.textContent = "₱ 720"
+                                break
+                            case 2:
+                                liquorDescription.textContent = `The flavor is dominated by the aroma of ajave juice and a hint of grapefruit. It is best accompanied by a wedge of lemon or any other citrus`
+                                alcoholLevel.textContent = "Alcohol level: 40%"
+                                price.textContent = "₱ 875"
+                                break
+                            case 3:
+                                liquorDescription.textContent = `The taste of earthiness from rye highlights the flavor of vodka, with fruit additives that give it sweetness`
+                                alcoholLevel.textContent = "Alcohol level: 40%"
+                                price.textContent = "₱ 1790"
+                                break
+                            case 4:
+                                liquorDescription.textContent = `The sweet taste of grapes and the aroma of other fruit mash gives the brandy its smooth taste`
+                                alcoholLevel.textContent = "Alcohol level: 40%"
+                                price.textContent = "₱ 695"
+                                break
+                            case 5:
+                                liquorDescription.textContent = `The combination of grains (rye, barley, wheat) gives a mild sweetness yet has a rich earthy flavor`
+                                alcoholLevel.textContent = "Alcohol level: 40%"
+                                price.textContent = "₱ 1490"
+                                break
+                            case 6:
+                                liquorDescription.textContent = `The richness of corn flavor gives bourbon a distinct taste in comparison to whiskey, but both share earthy flavor notes from grains`
+                                alcoholLevel.textContent = "Alcohol level: 40%"
+                                price.textContent = "₱ 750"
+                                break
+                            case 7:
+                                liquorDescription.textContent = `The iconic smokiness of scotch is what gives it its enjoyable taste, along with earthy flavors from grains and a hint of vanilla flavors`
+                                alcoholLevel.textContent = "Alcohol level: 40%"
+                                price.textContent = "₱ 1190"
+                                break
+                            case 8:
+                                liquorDescription.textContent = `The complex concoction of herbs, anise, and wormwood oil gives it a soothing, licorice-like flavor`
+                                alcoholLevel.textContent = "Alcohol level: 45%"
+                                price.textContent = "₱ 1895"
+                                break
+                            case 9:
+                                liquorDescription.textContent = `As a fruit-based spirit, schnapps gets its flavor based on the fruit used – popular choices are pears or apple`
+                                alcoholLevel.textContent = "Alcohol level: 20%"
+                                price.textContent = "₱ 500"
+                                break
+                            case 10:
+                                liquorDescription.textContent = `The sake is highlighted by its nutty flavor due to its flavors being derived from rice`
+                                alcoholLevel.textContent = "Alcohol level: 20%"
+                                price.textContent = "₱ 1795"
+                                break
+                            case 11:
+                                liquorDescription.textContent = `Simple dimple pop it squish, pop it squish,  what? M, a-a if your head hurts`
+                                alcoholLevel.textContent = "Alcohol level: 40%"
+                                price.textContent = "₱ 600"
+                                break
+                        }
+                    }
+                })
+            })
+            addToCart.addEventListener('click', (event) => {
+                cartCount += 1;
+                cartCounter.forEach(counter => {
+                    counter.textContent = cartCount;
+                })
+                priceDisplay += parseInt(price.textContent.match(/\d/g).join(""));
+                total.textContent = "₱ " + priceDisplay + ".00";
+                checkoutContent.innerHTML += "<div class='checkout-item'><div class='item-name'>"+ liquorNames[sourceList.indexOf(highlightContainer.src)] +"</div><div class='item-price'>₱ "+ prices[sourceList.indexOf(highlightContainer.src)] +`</div><i class="far fa-trash-alt"></i></div>`;
+            })
+            checkoutContent.addEventListener('click', event => {
+                if(event.target.classList.contains('fa-trash-alt')) {
+                    event.target.parentNode.remove();
+                    priceDisplay -= parseInt(event.target.previousSibling.textContent.match(/\d/g).join(""));
+                    total.textContent = "₱ " + priceDisplay + ".00";
+                    cartCount -= 1;
+                    cartCounter.forEach(counter => {
+                        counter.textContent = cartCount;
+                    })
+                }
+            })
+        }
+        const cartUIFunctions = () => {
+            cartButton.forEach(button => {
+                button.addEventListener('click', () => {
+                    cartWrapper.classList.remove('no-display');
+                    cartWrapper.classList.add('display');
+                    checkoutForm.classList.add('display');
+                    placeOrder[1].classList.remove('dis[play');
+                    placeOrder[1].classList.add('no-display');
+                    checkoutForm.classList.remove('no-display');
+                    checkoutForm.classList.add('display');
+                })
+            })
+            cartBackButton.forEach(button => {
+                button.addEventListener('click', () => {
+                    cartWrapper.classList.remove('display');
+                    cartWrapper.classList.add('no-display');
+                    checkoutFormOverlay.classList.remove('display');
+                    checkoutFormOverlay.classList.add('no-display');
+                })
+            })
+        }
+
+        const checkoutFunction = () => {
+            placeOrder[0].addEventListener('click', () => {
+                if(userInfo[0].value === "" || userInfo[1].value === "") {
+                    alert("Address or contact number cannot be empty!")
+                } else {
+                    checkoutFormOverlay.classList.remove('display');
+                    checkoutFormOverlay.classList.add('no-display');
+                    placeOrder[1].classList.remove('no-display');
+                }
+            })
+            overlayArrow.addEventListener('click', () => {
+                console.log(true);
+                cartWrapper.classList.remove('no-display');
+                cartWrapper.classList.add('display');
+                checkoutFormOverlay.classList.remove('display');
+                checkoutFormOverlay.classList.add('no-display');
+                checkoutForm.classList.remove('no-display');
+                checkoutForm.classList.add('display');
+            })
+            checkout.addEventListener('click', () => {
+                if(total.textContent === "₱ 0.00") {
+                    alert("You have nothing in your cart!")
+                } else if(checkout.classList.contains('otp-tag')) {
+                    checkoutForm.classList.add('no-display');
+                    checkoutForm.classList.remove('display');
+                    checkoutFormOverlay.classList.remove('no-display');
+                    checkoutFormOverlay.classList.add('display');
+                    checkoutTotal.textContent = `Total P ` + priceDisplay;
+                } else if(checkout.classList.contains('member-tag')) {
+                    checkoutForm.classList.add('no-display');
+                    checkoutForm.classList.remove('display');
+                    checkoutFormOverlay.classList.remove('no-display');
+                    checkoutFormOverlay.classList.add('display');
+                    discountArea.textContent = `${priceDisplay} -${priceDisplay * 0.1}`
+                    checkoutTotal.textContent =  `Total P` + (priceDisplay - priceDisplay * 0.1);
+                }
+            })
+            payment[0].addEventListener('click', (event) => {
+                payment[1].classList.remove('powder')
+                event.target.classList.add('powder')
+                cardField.classList.add('no-display');
+                cardField.classList.remove('display');
+            })
+            payment[1].addEventListener('click', (event) => {
+                payment[0].classList.remove('powder')
+                event.target.classList.add('powder')
+                cardField.classList.remove('no-display');
+                cardField.classList.add('display');
+            })
+            finalButton.addEventListener('click', () => {
+                location.reload();
+            })
+        }
+
+        // Driver code
+        headerButtonsUnderline();
+        headerButton();
+        login();
+        shopFunctions();
+        cartUIFunctions();
+        aboutUsPage();
+        flatFunction();
+        checkoutFunction();
+        omw();
+    </script>
+</body>
+</html>
